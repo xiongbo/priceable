@@ -9,13 +9,13 @@ module Priceable
       next unless suffix
       define_method price_field do
         unless send("#{price_field}#{suffix}".to_sym).nil?
-          send("#{price_field}#{suffix}".to_sym) / 100.0
+          send("#{price_field}#{suffix}".to_sym) / 1000.0
         else
           0.0
         end
       end
       define_method "#{price_field}=".to_sym do |new_price|
-        send("#{price_field}#{suffix}=".to_sym, (new_price.to_f * 100).round)
+        send("#{price_field}#{suffix}=".to_sym, (new_price.to_f * 1000).round)
       end
     end
 
